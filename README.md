@@ -68,3 +68,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Containers => (dum), visar endast upp info
+* <QuizList quizzes>
+<li>
+</li>
+
+Components => Sköter logik (smart), hämtar Containers 
+<QuizList data={quizzes}>
+
+1. Create JSON mockup data
+2. Convert JSON to JS => Send JSON inte form component
+3. 
