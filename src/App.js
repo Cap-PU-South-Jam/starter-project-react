@@ -2,28 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 
 import TestClass from './TestClass';
-import TestFunction from './TestFunction';
+import Form from './Form';
+import MyButton from './MyButton';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <TestClass></TestClass>
-        <TestFunction></TestFunction>
+    <MyButton name={"My button"}/>
+      <Form />
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
