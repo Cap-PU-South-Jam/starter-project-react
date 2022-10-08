@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+import TestClass from './TestClass';
+import TestFunction from './TestFunction';
+
 function App() {
   return (
     <div className="App">
@@ -9,6 +12,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <TestClass></TestClass>
+        <TestFunction></TestFunction>
+
         <a
           className="App-link"
           href="https://reactjs.org"
