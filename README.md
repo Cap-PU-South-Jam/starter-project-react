@@ -81,3 +81,4 @@ Components => Sköter logik (smart), hämtar Containers
 1. Create JSON mockup data
 2. Convert JSON to JS => Send JSON inte form component
 3. 
+hej!
