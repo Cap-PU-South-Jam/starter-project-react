@@ -25,13 +25,13 @@ const Form = () => {
 	return (
 		<div>
 			<form onSubmit={onSubmit}>
-				<p>Frågan här:</p>
+				<p>{item.question1}</p>
 				<input type="radio" id="html" name="fav_language" value="HTML" />
-				<label htmlFor="html">Answer 1</label><br />
+				<label htmlFor="html">{item.Answer1}</label><br />
 				<input type="radio" id="css" name="fav_language" value="CSS" />
-				<label htmlFor="css">Answer 2</label><br />
+				<label htmlFor="css">{item.Answer2}</label><br />
 				<input type="radio" id="javascript" name="fav_language" value="JavaScript" />
-				<label htmlFor="javascript">Answer 3</label> <br />
+				<label htmlFor="javascript">{item.Answer3}</label> <br />
 				<input type="submit" value="Submit" />
 			</form>
 		</div>
