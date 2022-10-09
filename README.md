@@ -79,6 +79,6 @@ Components => Sköter logik (smart), hämtar Containers
 <QuizList data={quizzes}>
 
 1. Create JSON mockup data
-2. Convert JSON to JS => Send JSON inte form component
+2. Convert JSON to JS => Send JSON into form component
 3. 
 hej!
