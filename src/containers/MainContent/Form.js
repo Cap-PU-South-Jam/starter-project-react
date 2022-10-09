@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from '@mui/material';
 import styled, { css } from 'styled-components'
-import PrevAndNext from './PrevAndNext'
+import PrevAndNext from '../../components/PrevAndNext'
 let answers = [];
 
 const MyForm = styled.div`
@@ -44,7 +44,7 @@ const Form = () => {
 			<Button variant={'outlined'} onClick={onSubmitQuestion}>Submit</Button>
 			<PrevAndNext></PrevAndNext>
 			<p>Question 1  / 50 </p>
-			<Button variant={'outlined'} onClick={onSubmitQuestionQuiz}>Submit Quiz!</Button>
+
 		</MyForm>
 	)
 }

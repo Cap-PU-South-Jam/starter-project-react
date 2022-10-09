@@ -1,10 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-import TestClass from './TestClass';
-import Form from './Form';
-import MyButton from './MyButton';
-import HomePage from './HomePage';
+import HomePage from '../HomePage/HomePage';
 
 function App() {
 
