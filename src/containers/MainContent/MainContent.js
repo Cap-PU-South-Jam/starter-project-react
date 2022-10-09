@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import Form from './Form';
 import Submitted from './Submitted';
+import LoadQuiz from './LoadQuiz';
 import PrevAndNext from '../../components/PrevAndNext';
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from "react";
@@ -41,6 +42,8 @@ const GameContent = (state) => {
 
 const MainContent = () => {
   const [quizState, setQuizState] = useState('PLAY');
+  const [chosenQuiz, setChosenQuiz] = useState('PLAY');
+
   const buttonText = quizState === 'PLAY' ? "Submit quiz" : "Start new quiz";
   const buttonOutline = quizState === 'PLAY' ? "outlined" : "contained";
 	const onSubmit = (event) => {
@@ -51,10 +54,17 @@ const MainContent = () => {
     }
 	}
 
+  const chooseQuiz = (value) => {
+    console.log("chooseQuiz value is: ", value);
+    setChosenQuiz(value);
+  }
+
   return (
     <MyMainContent>
+      <LoadQuiz chooseQuiz={chooseQuiz}></LoadQuiz>
       <MainInputArea>
-      <GameContent quizState={quizState}></GameContent>
+
+        <GameContent chosenQuiz={chosenQuiz} quizState={quizState}></GameContent>
         <MyButton variant={buttonOutline} onClick={onSubmit}>{buttonText}</MyButton>
       </MainInputArea>
     </MyMainContent>

@@ -12,7 +12,7 @@ const MyButton = styled(Button)`
 	margin: 10px;
 `;
 
-const Form = () => {
+const Form = ({chosenQuiz}) => {
 	const [qIndex, setqIndex] = useState(1);
 	// const [answers, setAnswers] = useState([]);
 
@@ -22,6 +22,7 @@ const Form = () => {
 	} 
 
 	const onSubmitQuestion = (event) => {
+		setqIndex(qIndex + 1);
 		answers.push(qIndex);
 		console.log("answers is: ", answers);
 	}
