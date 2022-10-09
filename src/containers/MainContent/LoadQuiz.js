@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Form from './Form';
 import PrevAndNext from '../../components/PrevAndNext';
 import { Button } from '@mui/material';
+import axios from "axios";
 
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -30,22 +31,178 @@ const QuizSize = styled.div`
 const Score = styled.p`
 `;
 
+const mockupData = {
+    ID: "0",
+    Text: "AzureQuestions",
+    Question: [
+        {
+            ID: "1",
+            Text: "This is a question - 1",
+            Answer: [
+                {
+                    ID: 0,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 1,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 2,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 3,
+                    Text: "Value",
+                    Correct: true
+                }
+            ]
+        },
+        {
+            ID: "2",
+            Text: "This is a question - 2",
+            Answer: [
+                {
+                    ID: 0,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 1,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 2,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 3,
+                    Text: "Value",
+                    Correct: true
+                }
+            ]
+        },
+        {
+            ID: "3",
+            Text: "This is a question - 3",
+            Answer: [
+                {
+                    ID: 0,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 1,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 2,
+                    Text: "Value",
+                    Correct: true
+                },
+                {
+                    ID: 3,
+                    Text: "Value",
+                    Correct: true
+                }
+            ]
+        }
+    ]
+}
+
+
+
 const MyButton = styled(Button)`
 	margin: 10px;
 `;
 
-const LoadQuiz = ({chooseQuiz}) => {
+const fetchItemData = (url) => fetch("http://localhost:8080/quiz", {
+    headers: {
+        Accept: 'application/json',
+    },
+    credentials: 'same-origin',
+}).then((response) => {
+
+    // console.log("response data is: ", response.data);
+    console.log("response.body is: ", parseJSON(response));
+    if (response.status != 404) {
+        return parseJSON(response);
+    }
+    return null;
+})
+
+
+async function getQuizFromAPI() {
+    try {
+        const config = {
+            baseURL: "http://localhost:8080/quiz",
+            method: "GET"
+        };
+        try {
+            const result = await axios.get("http://localhost:8080/quiz");
+            console.log(result.data,'GetQuiz')
+            return result.data;
+        } catch (error) {
+            if (typeof error.response !== "undefined") {
+                console.error("api error");
+                return false;
+            }
+        }
+    } catch (error) {
+        console.log("error api");
+        console.error(error);
+    }
+}
+
+const parseJSON = (response) => response.json();
+
+
+const LoadQuiz = ({chooseQuiz, providedQuiz}) => {
 
 	const onSubmitScore = (event) => {
 		// answers.push(count);
 		// console.log("answers is: ", answers);
 	}
 
-    const [quiz, setQuiz] = React.useState('');
+    const [quiz, setQuiz] = React.useState(mockupData);
 
     const handleChange = (event) => {
         setQuiz(event.target.value);
         chooseQuiz(event.target.value);
+    };
+
+     const loadTheQuiz = (event) => {
+        console.log("quuiz is:", quiz);
+        providedQuiz(quiz);
+
+        // useFetchQuiz();
+
+        // const getApi = getQuizFromAPI().Result;
+
+        // console.log("getApi is: ", getApi);
+        
+        // const response = fetchItemData("")
+        // .then((response) => {
+        //   if (response.length === 0) {
+        //     // throw createDEXFRequestError();
+        //   }
+        //   console.log("response is: ", response);
+        //   return response;
+        // //   return remapItemData(response,businessRules);
+        // }).then((response) => {
+        //     console.log("response again is: ", response);
+        //     return response;
+        //   //   return remapItemData(response,businessRules);
+        //   })
+
+        // // const data = fetchItemData();
+        // console.log("data is: ", response);
     };
 
 
@@ -67,6 +224,7 @@ const LoadQuiz = ({chooseQuiz}) => {
                             <MenuItem value={2}>Second quiz</MenuItem>
                             <MenuItem value={3}>Third quiz</MenuItem>
                         </Select>
+                        <MyButton variant={'contained'} onClick={loadTheQuiz}>Submit</MyButton>
                     </FormControl>
                 </Box>
             </QuizSize>
