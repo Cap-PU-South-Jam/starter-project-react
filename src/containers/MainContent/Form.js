@@ -5,14 +5,12 @@ import PrevAndNext from '../../components/PrevAndNext'
 let answers = [];
 
 const MyForm = styled.div`
-	margin-left: 25%;
-	margin-right: 25%;
-	width:  50%;
-	height: 35%;
-	background: #add8e6;;
-	border-radius: 3px;
-	border: 2px solid palevioletred;
+
 `
+
+const MyButton = styled(Button)`
+	margin: 10px;
+`;
 
 const Form = () => {
 	const [count, setCount] = useState(1);
@@ -41,7 +39,8 @@ const Form = () => {
 			<input type="radio" value="2" name="gender" /> Alternative 2 <br />
 			<input type="radio" value="3" name="gender" /> Alternative 3 <br />
 			<input type="radio" value="4" name="gender" /> Alternative 4 <br />
-			<Button variant={'outlined'} onClick={onSubmitQuestion}>Submit</Button>
+			
+			<MyButton variant={'contained'} onClick={onSubmitQuestion}>Submit</MyButton>
 			<PrevAndNext></PrevAndNext>
 			<p>Question 1  / 50 </p>
 
