@@ -9,20 +9,21 @@ const Buttons = styled.div`
 	margin-top: 10px;
 `
 
-const PrevAndNext = () => {
+const PrevAndNext = ({changeQuestion}) => {
 	const [count, setCount] = useState(1);
 	// const [answers, setAnswers] = useState([]);
 	
 	const onSubmit = (event) => {
 	}
 
-	const onChangeValue = (event) =>  {
-	  }
+	const onChangeValue = (value) =>  {
+		changeQuestion(value);
+	}
 
 	return (
 		<Buttons onChange={onChangeValue}>
-			<Button variant={'outlined'} onClick={onSubmit}>Prev Q</Button>
-			<Button variant={'outlined'} onClick={onSubmit}>Next Q</Button>
+			<Button variant={'outlined'} onClick={() => onChangeValue(-1)}>Prev Q</Button>
+			<Button variant={'outlined'} onClick={() => onChangeValue(1)}>Next Q</Button>
 		</Buttons>
 	)
 }

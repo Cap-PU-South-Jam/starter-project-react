@@ -13,12 +13,16 @@ const MyButton = styled(Button)`
 `;
 
 const Form = () => {
-	const [count, setCount] = useState(1);
+	const [qIndex, setqIndex] = useState(1);
 	// const [answers, setAnswers] = useState([]);
 
+	const changeQuestion = (value) => {
+		console.log("value is: ", value)
+		setqIndex(qIndex + value);
+	} 
 
 	const onSubmitQuestion = (event) => {
-		answers.push(count);
+		answers.push(qIndex);
 		console.log("answers is: ", answers);
 	}
 
@@ -28,8 +32,8 @@ const Form = () => {
 	}
 
 	const onChangeValue = (event) => {
-		setCount(event.target.value);
-		console.log(event.target.value);
+		// setqIndex(event.target.value);
+		// console.log(event.target.value);
 	}
 
 	return (
@@ -41,8 +45,8 @@ const Form = () => {
 			<input type="radio" value="4" name="gender" /> Alternative 4 <br />
 			
 			<MyButton variant={'contained'} onClick={onSubmitQuestion}>Submit</MyButton>
-			<PrevAndNext></PrevAndNext>
-			<p>Question 1  / 50 </p>
+			<PrevAndNext changeQuestion={changeQuestion}></PrevAndNext>
+			<p>Question {qIndex} / 50 </p>
 
 		</MyForm>
 	)

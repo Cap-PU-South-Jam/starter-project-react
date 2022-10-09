@@ -42,6 +42,7 @@ const GameContent = (state) => {
 const MainContent = () => {
   const [quizState, setQuizState] = useState('PLAY');
   const buttonText = quizState === 'PLAY' ? "Submit quiz" : "Start new quiz";
+  const buttonOutline = quizState === 'PLAY' ? "outlined" : "contained";
 	const onSubmit = (event) => {
     if(quizState === 'PLAY'){
       setQuizState('SUBMITTED');
@@ -54,7 +55,7 @@ const MainContent = () => {
     <MyMainContent>
       <MainInputArea>
       <GameContent quizState={quizState}></GameContent>
-        <MyButton variant={'outlined'} onClick={onSubmit}>{buttonText}</MyButton>
+        <MyButton variant={buttonOutline} onClick={onSubmit}>{buttonText}</MyButton>
       </MainInputArea>
     </MyMainContent>
   );
