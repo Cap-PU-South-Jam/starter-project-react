@@ -5,25 +5,33 @@ import PrevAndNext from '../../components/PrevAndNext';
 import { Button } from '@mui/material';
 
 const MySubmitted = styled.div`
-  width:  100%;
-  height: 80%;
+  margin-top: 15%;
+  margin-left: 25%;
+  width:  50%;
+  height: 50%;
   background: transparent;
 
 `
+const Score = styled.p`
+`;
+
 const MyButton = styled(Button)`
 	margin: 10px;
 `;
 
 const Submitted = () => {
 
-	const onSubmitQuestionQuiz = (event) => {
+	const onSubmitScore = (event) => {
 		// answers.push(count);
 		// console.log("answers is: ", answers);
 	}
 
   return (
     <MySubmitted>
-        Submitted response!
+        Quiz submitted! <br/>
+        <Score> Your score is 50 / 70 </Score>
+        <br/>
+        <MyButton variant={'outlined'} onClick={onSubmitScore}>Publish result</MyButton>
     </MySubmitted>
   );
 }
