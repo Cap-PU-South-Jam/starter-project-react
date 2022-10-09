@@ -5,6 +5,7 @@ import LoadQuiz from './LoadQuiz';
 import PrevAndNext from '../../components/PrevAndNext';
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from "react";
+import { ConstructionOutlined } from '@mui/icons-material';
 
 const MyMainContent = styled.div`
   width:  100%;
@@ -17,7 +18,7 @@ const MainInputArea = styled.div`
   margin-left: 25%;
   margin-right: 25%;
   width:  50%;
-  height: 35%;
+  height: 45%;
   background: #add8e6;;
   border-radius: 3px;
   border: 2px solid palevioletred;
@@ -32,17 +33,35 @@ const MyButton = styled(Button)`
 // }
 
 const GameContent = (state) => {
-  console.log("quizState is: ", state);
   if(state.quizState === 'PLAY'){
-    return <Form></Form>;
+    return <Form chosenQuiz={state.chosenQuiz}></Form>;
   } else if(state.quizState === 'SUBMITTED'){
     return <Submitted></Submitted>;
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const MainContent = () => {
+  
   const [quizState, setQuizState] = useState('PLAY');
-  const [chosenQuiz, setChosenQuiz] = useState('PLAY');
+  
+  const [chosenQuiz, setChosenQuiz] = useState({});
 
   const buttonText = quizState === 'PLAY' ? "Submit quiz" : "Start new quiz";
   const buttonOutline = quizState === 'PLAY' ? "outlined" : "contained";
@@ -54,17 +73,21 @@ const MainContent = () => {
     }
 	}
 
-  const chooseQuiz = (value) => {
-    console.log("chooseQuiz value is: ", value);
+  const providedQuiz = (value) => {
+    console.log("quiz provided: ", value);
     setChosenQuiz(value);
   }
 
+  const chooseQuiz = (value) => {
+    setChosenQuiz(value);
+  }
+  
   return (
     <MyMainContent>
-      <LoadQuiz chooseQuiz={chooseQuiz}></LoadQuiz>
+      <LoadQuiz providedQuiz={providedQuiz} chooseQuiz={chooseQuiz}></LoadQuiz>
       <MainInputArea>
 
-        <GameContent chosenQuiz={chosenQuiz} quizState={quizState}></GameContent>
+        <GameContent quizState={quizState} chosenQuiz={chosenQuiz}></GameContent>
         <MyButton variant={buttonOutline} onClick={onSubmit}>{buttonText}</MyButton>
       </MainInputArea>
     </MyMainContent>
